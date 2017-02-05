@@ -12,7 +12,7 @@ FAQ
   > [Here](https://sudodoki.github.io/currency-exchange)
 
 + Is this your best code?
-  > Nope, I'm not proud of it, but it does what it have to.
+  > Nope, I'm not proud of it, but it does what it needs to.
 
 + Why not rewrite this then?
   > Nah, I was trying to beat the clock and write it as fast as I can

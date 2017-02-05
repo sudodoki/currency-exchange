@@ -391,7 +391,7 @@ class Chart {
      hideOverlapping(ticks);
 
      ticks
-       .on('mouserover', null)
+       .on('mouseover', null)
        .on('mouseout', null)
        .on('mouseover', (_val, index) => {
          bars.filter((_d, i) => i === index)

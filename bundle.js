@@ -30,7 +30,7 @@ reflectDateInTitle(startOfScale);
 setFromToFromHash();
 indicateCurrencies(from, to, (base, symbol) => location.hash = `${base}/${symbol}`);
 
-// TODO: remove selects and stuff into controls
+// TODO: remove selects and stuff into lib/controls
 const controls = initControls('graph-container')
 
 const chart = new Chart('graph-container', {
@@ -215,7 +215,7 @@ const request = (url) =>
     })
   })
 
-const host = "http://api.fixer.io";
+const host = "https://api.fixer.io";
 
 const getData = (base, symbol, listOfPaths, listOfLabels) => {
   return Promise.all(listOfPaths.map((asPath, index) => {

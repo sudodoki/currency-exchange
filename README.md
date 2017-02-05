@@ -19,3 +19,11 @@ FAQ
 
 + How long did it take?
   > 5 hours 25 minutes
+
+TODO
+====
+
++ [ ] refactor controls piece at least
++ [ ] expose ability to select amount of days to display
++ [ ] add loader
++ [ ] prettier errors

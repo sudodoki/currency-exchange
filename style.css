@@ -1,0 +1,64 @@
+html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+body > * {
+  margin: 0 auto;
+  text-align: center;
+}
+.controls, .info-bar {
+  text-align: right;
+  margin-right: 20px;
+}
+#graph-container {
+  margin: 0 auto;
+  max-width: 1200px;
+  height: 100%;
+  max-height: 600px;
+  width: 100%;
+}
+text {
+  cursor: default;
+}
+.bar {
+  display: inline-block;
+  margin-right: 2px;
+  fill: steelblue;
+}
+.hidden {
+  display: none;
+}
+.down:hover,
+.down.hover {
+  fill: #a94442;
+}
+.up:hover,
+.up.hover {
+  fill: #3c763d;
+}
+.bartext {
+  text-anchor: middle;
+  fill: black;
+  font-size: 12px;
+}
+.x-axis text {
+  cursor: pointer;
+}
+.x-axis .domain {
+  stroke: transparent;
+}
+.median path {
+  stroke: green;
+  stroke-dasharray: 5, 5;
+}
+
+.info-bar > * {
+  padding-left: 5px;
+}
+
+.median-info {
+  color: green
+}

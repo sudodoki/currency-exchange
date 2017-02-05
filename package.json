@@ -1,0 +1,30 @@
+{
+  "name": "currency-exchange",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "config": {
+    "port": "1337"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:dev": "watchify index.js -o bundle.js",
+    "build": "browserify index.js -o bundle.js",
+    "browser": "open http://localhost:$npm_package_config_port && serve . -p $npm_package_config_port",
+    "dev": "concurrently \"npm run build:dev\" \"npm run browser\""
+  },
+  "keywords": [],
+  "author": "sudodoki <smd.deluzion@gmail.com> (sudodoki.name)",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^14.0.0",
+    "concurrently": "^3.1.0",
+    "serve": "^3.2.1",
+    "watchify": "^3.9.0"
+  },
+  "dependencies": {
+    "d3": "^4.5.0",
+    "d3-request": "^1.0.3",
+    "d3-scale": "^1.0.4"
+  }
+}

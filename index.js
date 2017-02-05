@@ -18,9 +18,9 @@ const listOfPaths = listOfDates.map(date => {
 const listOfLabels = listOfDates.map(date =>
   date.toLocaleString('en-us', { month: 'short', day: '2-digit' })
 );
-
+let from, to;
 const setFromToFromHash = () => {
-  [possibleFrom, possibleTo] = location.hash.slice(1).split('/');
+  let [possibleFrom, possibleTo] = location.hash.slice(1).split('/');
   from = currencies.includes(possibleFrom) ? possibleFrom : currencies[0];
   to = currencies.includes(possibleTo) ? possibleTo : currencies[1];
 }

@@ -113,4 +113,6 @@ d3.select('[name="to"]').on('change', function (){
 });
 
 reflectOptions(from, to)
-getData(from, to, listOfPaths, listOfLabels).then(reflectData);
+getData(from, to, listOfPaths, listOfLabels)
+  .then(reflectData)
+  .catch(console.warn.bind(console));

@@ -180,6 +180,7 @@ module.exports = [
   "CNY",
   "CZK",
   "DKK",
+  "EUR",
   "GBP",
   "HKD",
   "HRK",

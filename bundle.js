@@ -419,7 +419,8 @@ const hideOverlapping = (d3TextNodesSelection) => {
   d3TextNodesSelection.each(function (_val, index, all) {
     all = all || Array.from(all);
     if (index < all.length - 1) {
-      const next = all[index + 1]
+      const next = all[index + 1];
+      next.classList.remove('hidden');
       // TODO: can avoid getBoundingClientRect extra call
       const isOverlapping = this.getBoundingClientRect().right > next.getBoundingClientRect().left && !this.classList.contains('hidden');
       if (isOverlapping) {

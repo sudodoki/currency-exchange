@@ -257,6 +257,12 @@ module.exports = { initControls };
 },{"d3":13}],8:[function(require,module,exports){
 const d3 = require('d3');
 const controls = require('./controls');
+
+const regularFormat = d3.format(',.2f');
+const smallFormatter = d3.format(',.2r');
+const smallPredicate = (number) => number - Math.floor(number) < 0.01
+const format = (number) =>
+  smallPredicate(number) ? smallFormatter(number) : regularFormat(number);
 // even though I would prefer FP-ish, we need to 'init' chart
 // and set some listeners and either update data or update sizes
 // so it makes sense to have it as class
@@ -332,10 +338,10 @@ class Chart {
       .enter()
       .append('span')
       .attr('class', 'median-info')
-      .text((d) => `Median: ${d3.format('.2f')(d)}`);
+      .text((d) => `Median: ${format(d)}`);
 
     this.info.selectAll('.median-info')
-      .text((d) => `Median: ${d3.format('.2f')(d)}`);
+      .text((d) => `Median: ${format(d)}`);
     this.info.selectAll('.deviation-info')
       .data([deviation])
       .enter()
@@ -343,7 +349,7 @@ class Chart {
       .attr('class', 'deviation-info')
 
     this.info.selectAll('.deviation-info')
-      .text((d) => `Standard deviation: ${d3.format('.2f')(d)}`);
+      .text((d) => `Standard deviation: ${format(d)}`);
   }
 
   drawLabeledBars(xScale, yScale, median) {
@@ -374,7 +380,7 @@ class Chart {
       .attr('y', d => this.height - yScale(d.value) - this.yTextPadding)
       .text(d => {
         // TODO: can be memoized
-        return d3.format('.2f')(d.value);
+        return format(d.value);
       });
     hideOverlapping(this.canvas.selectAll('.bartext'))
     return this.canvas.selectAll('rect');

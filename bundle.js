@@ -28,7 +28,8 @@ const setFromToFromHash = () => {
 
 reflectDateInTitle(startOfScale);
 setFromToFromHash();
-indicateCurrencies(from, to, (base, symbol) => location.hash = `${base}/${symbol}`);
+const persistInHash = (base, symbol) => location.hash = `${base}/${symbol}`;
+indicateCurrencies(from, to, persistInHash);
 
 // TODO: remove selects and stuff into lib/controls
 const controls = initControls('graph-container')
@@ -58,7 +59,7 @@ controls.append('button').attr('class', 'js-swap-btn').text('/')
       this.parentNode.lastChild.value = from;
       [from, to] = [to, from];
       reflectOptions(from, to);
-      indicateCurrencies(from, to);
+      indicateCurrencies(from, to, persistInHash);
       getData(from, to, listOfPaths, listOfLabels).then(reflectData);
     })
 const toSelect = controls.selectAll('[name="to"]')
@@ -102,18 +103,20 @@ const reflectOptions = (from, to) => {
 d3.select('[name="from"]').on('change', function (){
   from = this.value;
   reflectOptions(from, to);
-  indicateCurrencies(from, to);
+  indicateCurrencies(from, to, persistInHash);
   getData(from, to, listOfPaths, listOfLabels).then(reflectData);
 })
 d3.select('[name="to"]').on('change', function (){
   to = this.value;;
   reflectOptions(from, to);
-  indicateCurrencies(from, to);
+  indicateCurrencies(from, to, persistInHash);
   getData(from, to, listOfPaths, listOfLabels).then(reflectData);
 });
 
 reflectOptions(from, to)
-getData(from, to, listOfPaths, listOfLabels).then(reflectData);
+getData(from, to, listOfPaths, listOfLabels)
+  .then(reflectData)
+  .catch(console.warn.bind(console));
 
 },{"./lib/date":2,"./lib/optimizedResize":3,"./lib/rates":5,"./lib/utils":6,"./lib/visuals":8,"d3":13}],2:[function(require,module,exports){
 const d3 = require('d3');
@@ -428,6 +431,7 @@ const reflectDateInTitle = (date) =>
   )
 const indicateCurrencies = (base, symbol, cb) => {
   d3.select('.js-exchange-pair').text(`${base}/${symbol}`);
+  cb(base, symbol);
 }
 module.exports = Object.assign({
   Chart,
